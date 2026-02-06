@@ -1,0 +1,105 @@
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4); /* Dimmed background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.loginContainer {
+  background: #fff;
+  width: 100%;
+  max-width: 450px;
+  padding: 40px;
+  position: relative;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.closeButton {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #333;
+}
+
+.logo {
+  font-family: 'Brush Script MT', cursive; /* Approximation of the script font */
+  font-size: 48px;
+  margin-bottom: 10px;
+  color: #000;
+}
+
+.divider {
+  border: 0;
+  border-top: 1px solid #eee;
+  margin: 20px 0;
+  width: 100%;
+}
+
+.subtitle {
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 25px;
+}
+
+.inputGroup {
+  margin-bottom: 15px;
+}
+
+.inputGroup input {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  font-size: 14px;
+  box-sizing: border-box;
+  outline: none;
+}
+
+.forgotPassword {
+  display: block;
+  text-align: left;
+  font-size: 12px;
+  color: #aaa;
+  text-decoration: none;
+  margin-bottom: 25px;
+}
+
+.loginButton {
+  width: 100%;
+  padding: 15px;
+  background-color: #1a1a1a;
+  color: white;
+  border: none;
+  font-weight: bold;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.loginButton:hover {
+  background-color: #333;
+}
+
+.footer {
+  margin-top: 30px;
+  padding: 15px;
+  background-color: #f5f5f5;
+  font-size: 13px;
+  color: #666;
+}
+
+.footer a {
+  color: #aaa;
+  text-decoration: underline;
+}

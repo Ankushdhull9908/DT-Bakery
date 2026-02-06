@@ -1,0 +1,20 @@
+.hero{
+    height: auto;
+    width: 100vw;
+    position: relative;
+    
+    
+}
+
+.hero img{
+    height: auto;
+    width: 100%;
+    
+}
+
+.hero .herocontent{
+    position: absolute;
+  z-index: 1;
+  height: auto;
+  width: auto;
+}

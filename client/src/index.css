@@ -1,0 +1,17 @@
+*{
+  padding: 0;
+  margin: 0;
+  font-family: "Jost";
+  
+}
+
+.app{
+  max-width: 100vw;
+}
+
+
+body{
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
