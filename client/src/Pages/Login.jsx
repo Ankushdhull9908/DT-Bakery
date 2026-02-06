@@ -5,7 +5,7 @@ const Login = () => {
   return (
     <div className={'modalOverlay'}>
       <div className={'loginContainer'}>
-        <button className={'closeButton'} onClick={''}>×</button>
+        
         
         <h1 className={'logo'}>DT Bakery</h1>
         <hr className={'divider'} />
@@ -30,7 +30,7 @@ const Login = () => {
           </button>
         </form>
         
-        <div className={'footer'}>
+        <div className={'loginfooter'}>
           Don't have an account? <a href="#register">Register now</a>
         </div>
       </div>

@@ -9,9 +9,9 @@ function NavBar() {
         <h1 style={{fontFamily:"'Brush Script MT', 'cursive'"}}>DT Bakery</h1>
         <ul>
           <li onClick={()=> nav('/')}>Home</li>
-          <li>About Us</li>
-          <li>Contact US</li>
-          <li>Cart</li>
+          <li onClick={()=> nav('/aboutus')}>About Us</li>
+          <li >Contact US</li>
+          <li onClick={()=> nav('/cart')}>Cart</li>
         </ul>
         <div className="navright">
             <img src={icons.search} alt='search'/>
