@@ -47,7 +47,7 @@ nav .navsidebar{
     top: 0;
     background-color:white;
     left: 100vw;
-    height: 100%;
+    height: 100dvh;
     min-height: 100%;
     
     display: flex;
