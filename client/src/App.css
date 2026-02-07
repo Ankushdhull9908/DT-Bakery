@@ -4,5 +4,9 @@
   overflow-x: hidden;
 }
 
+.home{
+  min-height: 100vh;
+}
+
 
 

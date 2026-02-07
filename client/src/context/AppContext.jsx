@@ -1,23 +1,41 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useRef, useState } from "react";
 
 /* 1. Create Context */
 const AppContext = createContext();
 
 /* 2. Provider Component */
 export const AppProvider = ({ children }) => {
+
+  
   // Global states
-  const [user, setUser] = useState(null);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [loading, setLoading] = useState(false);
+   const [width, setWidth] = useState(window.innerWidth);
+   const [showmenu,setshowmenu] = useState(false)
+   
+     useEffect(() => {
+     const handleResize = () => {
+       
+       setWidth(window.innerWidth);
+     };
+   
+     // run once on mount
+     handleResize();
+   
+     // listen to resize
+     window.addEventListener("resize", handleResize);
+   
+     // cleanup (very important)
+     return () => {
+       window.removeEventListener("resize", handleResize);
+     };
+   }, []);
+
+   
+
 
   // Values you want globally available
   const value = {
-    user,
-    setUser,
-    isLoggedIn,
-    setIsLoggedIn,
-    loading,
-    setLoading,
+    width,
+    showmenu,setshowmenu
   };
 
   return (
