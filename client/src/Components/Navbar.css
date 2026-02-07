@@ -1,27 +1,33 @@
 .app nav{
   height: 12%;
-  width: 92%;
-  margin: auto;
+  width: 100%;
+ 
   color:rgb(188, 129, 87);
-  font-size: 1.2rem;
+  font-size: 1.8rem;
   font-weight:400;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   
   
+  position: relative;
  
 }
 
 .nav h1{
     font-family: 'Brush Script MT', cursive;
+    cursor: pointer;
 }
 
 nav ul{
     display: flex;
     justify-content: space-around;
     align-items: center;
-    width: 30%;   
+    width: auto;
+    gap: 20px;
+    padding: 10px;
+  
+    
 }
 
 
@@ -35,14 +41,56 @@ nav .navright{
     width: auto;
     gap: 20px;
     display: flex;
+    padding: 10px;
+}
+
+nav .navsidebar{
+    position: absolute;
+    z-index: 100;
+    top: 0;
+    background-color:white;
+    right: -100vw;
+    height: 100vh;
+    
+    display: flex;
+    width: 100vw;
+    justify-content: flex-start;
+
+    align-items: center;
+    flex-direction: column;
+
+}
+
+#showbtn{
+    display: none;
+}
+nav .navsidebar ul{
+display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
 }
 
 nav .navright img{
     height: 22px;
     width: auto;
+    cursor: pointer;
 }
 
 nav li:hover{
     color:rgb(188, 129, 87);
     transform: scale(1.05);
+}
+
+@media (max-width:600px) {
+    nav ul{
+        display: none;
+    }
+
+    nav .navsidebar{
+        right: 0;
+    }
+    #showbtn{
+    display: block;
+}
 }

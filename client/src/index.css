@@ -3,6 +3,7 @@
   margin: 0;
   font-family: "Jost";
   color: black;
+  box-sizing: border-box;
   
 }
 
@@ -15,4 +16,14 @@ body{
   display: flex;
   justify-content: center;
   align-items: flex-start;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+@media (max-width: 768px) {
+  html {
+    font-size: 56.25%;
+  }
 }
