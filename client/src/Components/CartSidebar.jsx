@@ -5,7 +5,7 @@ import './CartSidebar.css'
 
 function CartSidebar() {
     const nav = useNavigate()
-    const {showcartsidebar,setshowcartsidebar,width} =useAppContext()
+    const {showcartsidebar,setshowcartsidebar,width,cart,cartTotal} =useAppContext()
   return (
     <div className='cartsidebar' style={{right:showcartsidebar ? '0vw':width>=600? '-40vw':'-100vw'}}>
         <div className="carttopheading">
@@ -14,7 +14,7 @@ function CartSidebar() {
             </div>
             <h2>Shopping Cart</h2>
             <div className="closecartsidebar">
-            <p>3</p>
+            <p>{cart?.length}</p>
             </div>
 
         </div>
@@ -24,7 +24,7 @@ function CartSidebar() {
         <div className="cartbottom">
             <div className="carttotal">
              <h2>Total</h2>
-             <h2 style={{color:'brown'}}></h2>
+             <h2 style={{color:'brown'}}>{cartTotal}</h2>
             </div>
             <div className="viewcartandcheckout">
                 <div className="cartviewcart" onClick={()=> {setshowcartsidebar(false),

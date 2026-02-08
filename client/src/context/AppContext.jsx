@@ -11,7 +11,22 @@ export const AppProvider = ({ children }) => {
    const [width, setWidth] = useState(window.innerWidth);
    const [showmenu,setshowmenu] = useState(false)
    const [showcartsidebar,setshowcartsidebar] = useState(false)
-   
+   const [cart,setcart] = useState([])
+   const [cartTotal,setcartTotal] = useState(0)
+
+   useEffect(()=>{
+
+    setcartTotal(cart.map((i)=> i.price))
+
+   },[cart])
+
+   function AddToCart(index)
+   {
+    if(cart.length===0) setcart([...cart,index])
+    
+   }
+
+   console.log('cart',cart)
      useEffect(() => {
      const handleResize = () => {
        
@@ -36,7 +51,7 @@ export const AppProvider = ({ children }) => {
   // Values you want globally available
   const value = {
     width,
-    showmenu,setshowmenu,showcartsidebar,setshowcartsidebar
+    showmenu,setshowmenu,showcartsidebar,setshowcartsidebar,cart,setcart,AddToCart,cartTotal,setcartTotal
   };
 
   return (
