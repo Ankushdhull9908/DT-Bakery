@@ -88,10 +88,23 @@
 }
 
 .deliciousoffercontent{
-    width: 90%;
-    text-wrap: initial;
-    height: auto;
+    width: 100%;
+}
+
+.deliciousoffercontent p{
+
+    word-wrap: break-word;
+  overflow-wrap: break-word;
+  word-break: break-word;
+text-align: justify;
+  white-space: normal;
+  overflow: hidden;
  
     
+
+}
+
+.deliciousOffer .deliciousoffercards{
+    margin-left: 50px;
 }
 }

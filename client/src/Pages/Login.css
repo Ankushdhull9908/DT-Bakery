@@ -2,6 +2,7 @@
   height: 100%;
   width: 100%;
   position: relative;
+  min-height: 90dvh;
   display: flex;
   justify-content: center;
   align-items: center;
