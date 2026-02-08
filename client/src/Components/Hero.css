@@ -1,5 +1,5 @@
 .hero{
-    height: auto;
+    height: 90vh;
     width: 100%;
     position: relative;
     display: flex;
@@ -7,15 +7,13 @@
     align-items: center;
     background-image: url('../assets/hero.jpg');
     background-size: cover;
+    background-repeat: no-repeat;
     
     
 }
 
-.hero img{
-    height: auto;
-    width: 100%;
-    
-}
+
+
 
 .hero .herocontent{
    position: absolute;
@@ -68,17 +66,10 @@
 
 @media (max-width:600px) {
     .hero{
-        height: 50vh;
-    background-size: cover;
-    background-repeat: no-repeat;
-
-    
+        height: 40vh;
+  
 }
 
-    .hero img{
-        height: 35vh;
-        background-size: contain;
-    }
     .hero .herocontent{
   display: flex;
   justify-content: center;
@@ -95,7 +86,7 @@
 }
 
 .hero h1{
-    font-size: 2rem;
+    font-size: 2.5rem;
 }
 
 .hero .heropara{
@@ -106,6 +97,12 @@
 .hero .herobuttoncollection{
     height: 35px;
     justify-content: center;
+    flex-wrap: nowrap;
+    width: 90%;
+}
+
+.hero .herobuttoncollection .herobtn{
+    width: 200px;
 }
 
 

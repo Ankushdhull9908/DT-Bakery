@@ -5,7 +5,7 @@ import './Hero.css'
 function Hero() {
   return (
     <div className='hero'>
-        <img src={icons.heroimg} alt='heroimage'/>
+       
         <div className="herocontent">
             <div className="heroheading">
               <h1>Chocolate Cake</h1>
