@@ -75,7 +75,12 @@
 
     .deliciousOffer{
         padding: 20px;
+        gap: 20px;
+        height: auto;
+        background-color: red;
     }
+
+  
 
 
 .deliciousOffer .deliciousofferHeading h1{
@@ -84,5 +89,9 @@
 
 .deliciousoffercontent{
     width: 90%;
+    text-wrap: initial;
+    height: auto;
+    background-color: aqua;
+    
 }
 }
