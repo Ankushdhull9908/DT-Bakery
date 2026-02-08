@@ -1,8 +1,10 @@
+import { useNavigate } from 'react-router-dom'
 import { icons } from '../assets/Assets'
 import { useAppContext } from '../context/AppContext'
 import './CartSidebar.css'
 
 function CartSidebar() {
+    const nav = useNavigate()
     const {showcartsidebar,setshowcartsidebar,width} =useAppContext()
   return (
     <div className='cartsidebar' style={{right:showcartsidebar ? '0vw':width>=600? '-40vw':'-100vw'}}>
@@ -25,7 +27,8 @@ function CartSidebar() {
              <h2 style={{color:'brown'}}></h2>
             </div>
             <div className="viewcartandcheckout">
-                <div className="cartviewcart">
+                <div className="cartviewcart" onClick={()=> {setshowcartsidebar(false),
+                    nav('/cart')}}>
                   <h4>View Cart</h4>
                 </div>
                 <div className="cartcheckout">

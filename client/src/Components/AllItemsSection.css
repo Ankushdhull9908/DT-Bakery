@@ -1,0 +1,102 @@
+.AllItemsSection{
+    min-height: 100vh;
+
+    display: flex;
+    
+    align-items: center;
+    gap: 20px;
+    flex-direction: column;
+}
+
+.AllItemsSection .AllitemsSectionheading{
+    height: auto;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.AllItemsSection .AllitemsSectionheading h1{
+    font-size: 5rem;
+}
+
+.AllItemsSection .AllItemsSectionbuttonscollection{
+    flex-wrap: wrap;
+    
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 1;
+}
+
+.AllItemsSectionbuttonscollection .AllItemssectionbutton{
+    height: 50px;
+    width: 200px;
+    border: 0.1px solid #ddd;
+    color: white;
+    background-color: #535353;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.2s ease;
+    min-height: 30px;
+    min-width: 100px;
+    
+}
+
+.AllItemsSectionbuttonscollection .AllItemssectionbutton:hover{
+    background:none;
+    color: black;
+    cursor: pointer;
+}
+
+.AllItemsSection .productscollection{
+    flex-wrap: wrap;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    min-height: 400px;
+}
+
+.productscollection .productcard{
+    padding: 15px;
+
+}
+
+.productcard .productname{
+    display: flex;
+    align-items: center;
+    padding: 5px 0px;
+   
+}
+
+.productcard .productname h3{
+    font-weight: bold;
+    color: brown;
+}
+
+
+.productcard .productname p{
+    font-size: 1.7rem;
+}
+
+
+.productscollection .productcard img{
+    height: 300px;
+    width: 300px;
+}
+
+@media (max-width:600px) {
+    
+.AllItemsSection .AllitemsSectionheading h1{
+    font-size: 3rem;
+}
+
+.AllItemsSection .AllItemsSectionbuttonscollection{
+    width: 100%;
+}
+}
