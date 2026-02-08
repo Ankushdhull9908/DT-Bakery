@@ -4,11 +4,12 @@ import './Navbar.css'
 import { useAppContext } from '../context/AppContext.jsx'
 import { useEffect, useState } from 'react'
 import NavSideBar from './NavSideBar.jsx'
+import CartSidebar from './CartSidebar.jsx'
 function NavBar() {
 
   const nav = useNavigate()
 
-  const {width,showmenu,setshowmenu} = useAppContext()
+  const {width,showmenu,setshowmenu,setshowcartsidebar} = useAppContext()
   
 
 
@@ -31,11 +32,12 @@ function NavBar() {
             <img src={icons.search} alt='search'/>
             <img src={icons.user} alt='user' onClick={()=>nav('/login')} style={{display:width>=600 ? 'block': 'none'}}/>
             <img src={icons.heart} alt='like' style={{display:width>=600 ? 'block': 'none'}}/>
-            <img src={icons.bag} alt='cart'/>
+            <img src={icons.bag} alt='cart' onClick={()=> setshowcartsidebar(true)}/>
         </div>
         
         
         <NavSideBar />
+        <CartSidebar/>
          
       </nav>
   )

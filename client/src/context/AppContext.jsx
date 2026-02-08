@@ -10,6 +10,7 @@ export const AppProvider = ({ children }) => {
   // Global states
    const [width, setWidth] = useState(window.innerWidth);
    const [showmenu,setshowmenu] = useState(false)
+   const [showcartsidebar,setshowcartsidebar] = useState(false)
    
      useEffect(() => {
      const handleResize = () => {
@@ -35,7 +36,7 @@ export const AppProvider = ({ children }) => {
   // Values you want globally available
   const value = {
     width,
-    showmenu,setshowmenu
+    showmenu,setshowmenu,showcartsidebar,setshowcartsidebar
   };
 
   return (
