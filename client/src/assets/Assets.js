@@ -18,6 +18,6 @@ import product5 from './product5.jpg'
 import product6 from './product6.jpg'
 import product7 from './product7.jpg'
 import product8 from './product8.jpg'
+import delete1 from './delete.png'
 
-
-export const icons = {product1,product2,product3,product4,product5,product6,product7,product8,close,cake3,cake4,cake2,cake1,rightarrow,hamburger,bag,user,heart,search,heroimg}
+export const icons = {delete1,product1,product2,product3,product4,product5,product6,product7,product8,close,cake3,cake4,cake2,cake1,rightarrow,hamburger,bag,user,heart,search,heroimg}

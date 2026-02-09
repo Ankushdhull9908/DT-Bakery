@@ -6,13 +6,31 @@ const AppContext = createContext();
 /* 2. Provider Component */
 export const AppProvider = ({ children }) => {
 
-  
   // Global states
    const [width, setWidth] = useState(window.innerWidth);
    const [showmenu,setshowmenu] = useState(false)
    const [showcartsidebar,setshowcartsidebar] = useState(false)
    const [cart,setcart] = useState([])
    const [cartTotal,setcartTotal] = useState(0)
+   const [logindata,setlogindata]=useState(null)
+
+  useEffect(() => {
+  if (showcartsidebar || showmenu) {
+    document.body.style.overflowY = "hidden";
+  } else {
+    document.body.style.overflowY = "auto";
+  }
+}, [showcartsidebar, showmenu]);
+
+
+useEffect(()=>{
+
+  const data = JSON.parse(localStorage.getItem('userdata'))
+
+  !data ? setlogindata(null) : setlogindata(data)
+
+},[])
+
 
    useEffect(()=>{
 
@@ -22,7 +40,8 @@ export const AppProvider = ({ children }) => {
 
    function AddToCart(index)
    {
-    if(cart.length===0) setcart([...cart,index])
+    setcart([...cart,index])
+
     
    }
 
@@ -45,13 +64,16 @@ export const AppProvider = ({ children }) => {
      };
    }, []);
 
+
+   console.log('user data',logindata)
+
    
 
 
   // Values you want globally available
   const value = {
     width,
-    showmenu,setshowmenu,showcartsidebar,setshowcartsidebar,cart,setcart,AddToCart,cartTotal,setcartTotal
+    showmenu,setshowmenu,showcartsidebar,setshowcartsidebar,cart,setcart,AddToCart,cartTotal,setcartTotal,logindata,setlogindata
   };
 
   return (

@@ -93,6 +93,76 @@
    
 }
 
+.cartsidebar .cartitems{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 5px;
+    min-height: 76%;
+    flex-direction: column;
+    width: 100%;
+    overflow-y: auto;
+}
+
+.cartitems::-webkit-scrollbar{
+    display: none;
+}
+.cartsidebar .cartitems .cartitem{
+    display: flex;
+    margin-top: 5px;
+    justify-content: flex-start;
+    gap: 10px;
+    padding: 10px 10px;
+    align-items: center;
+    height: auto;
+    max-height: 120px;
+    width: 95%;
+    flex-shrink: 0;
+ 
+    border-bottom: 0.1px solid #ddd;
+}
+
+.cartitem .cartitemimage{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: auto;
+}
+
+.cartitem .cartitemimage img{
+    height: 90%;
+    width: auto;
+}
+
+.cartitem .cartitemmainfields{
+    height: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+    width: 65%;
+    gap: 0px;
+  
+}
+
+.cartitem .cartitemdeletebtn{
+    height: 100%;
+    width: auto;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 2px;
+}
+
+.cartitem .cartitemmainfields p{
+    font-size: 1.6rem;
+}
+
+.cartitem .cartitemmainfields h3{
+    font-size: 1.8rem;
+}
+
 @media (max-width:600px) {
     .cartsidebar{
         width: 80vw;

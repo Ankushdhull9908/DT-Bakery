@@ -19,12 +19,41 @@ function CartSidebar() {
 
         </div>
         <div className="cartitems">
+            {
+                  cart?.length>0 ? (cart.map((i,key)=>{
+                    return(<div className="cartitem">
+                <div className="cartitemimage">
+                    <img src={i.src} alt='cart item image'/>
+                </div>
+                <div className="cartitemmainfields">
+                        <div className="cartitemname">
+                    <p>{i.name}</p>
+
+                </div>
+                <div className="cartitemname">
+                    <p>QTY: 1</p>
+                </div>
+                <div className="cartitemname">
+                    <h3>₹ {i.price}</h3>
+                </div>
+                </div>
+                <div className="cartitemdeletebtn">
+                    <img src={icons.delete1} alt='cart delete icon' style={{height:'15px',width:'15px'}}/>
+                </div>
+                
+
+            </div>)
+                  })):'Add Something in cart'
+            }
+            
+            
+        
 
         </div>
         <div className="cartbottom">
             <div className="carttotal">
              <h2>Total</h2>
-             <h2 style={{color:'brown'}}>{cartTotal}</h2>
+             <h2 style={{color:'brown'}}>₹ {cartTotal}</h2>
             </div>
             <div className="viewcartandcheckout">
                 <div className="cartviewcart" onClick={()=> {setshowcartsidebar(false),
