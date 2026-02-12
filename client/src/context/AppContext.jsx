@@ -22,6 +22,17 @@ export const AppProvider = ({ children }) => {
   }
 }, [showcartsidebar, showmenu]);
 
+function increaseandDecreaseQTY(operation,cartindex)
+{
+    const copy = {...cartindex}
+    copy.name ="It changed"
+
+    console.log(copy)
+
+
+    setcart([...cart,copy])
+    
+}
 
 useEffect(()=>{
 
@@ -72,7 +83,7 @@ useEffect(()=>{
 
   // Values you want globally available
   const value = {
-    width,
+    width,increaseandDecreaseQTY,
     showmenu,setshowmenu,showcartsidebar,setshowcartsidebar,cart,setcart,AddToCart,cartTotal,setcartTotal,logindata,setlogindata
   };
 

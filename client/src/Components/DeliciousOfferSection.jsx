@@ -1,9 +1,16 @@
 import React from 'react'
 import './DeliciousOffer.css'
 import { icons } from '../assets/Assets'
+import { motion } from 'framer-motion'
 
 function DeliciousOfferSection() {
   return (
+        <motion.div
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6 }}
+      viewport={{ once: true }}
+    >
     <div className='deliciousOffer'>
         <div className="deliciousofferHeading">
             <h1>OUR DELICIOUS OFFER</h1>
@@ -46,6 +53,7 @@ function DeliciousOfferSection() {
         </div>
       
     </div>
+    </motion.div>
   )
 }
 

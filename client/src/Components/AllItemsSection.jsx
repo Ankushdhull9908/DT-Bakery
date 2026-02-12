@@ -2,6 +2,7 @@
 import { icons } from '../assets/Assets'
 import { useAppContext } from '../context/AppContext'
 import './AllItemsSection.css'
+import { motion } from 'framer-motion'
 
 function AllItemsSection() {
 
@@ -11,6 +12,12 @@ function AllItemsSection() {
         {src:icons.product5,name:"Pastry Cake",price:100},{src:icons.product6,name:"Pastry Cake",price:60},
         {src:icons.product7,name:"Pastry Cake",price:200},{src:icons.product8,name:"Pastry Cake",price:160}]
   return (
+    <motion.div
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6 }}
+      viewport={{ once: true }}
+    >
     <div className='AllItemsSection'>
     <div className="AllitemsSectionheading">
         <h1>Our Best Seller</h1>
@@ -64,6 +71,7 @@ function AllItemsSection() {
   
       
     </div>
+    </motion.div>
   )
 }
 

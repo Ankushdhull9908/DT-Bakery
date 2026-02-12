@@ -5,7 +5,7 @@ import './CartSidebar.css'
 
 function CartSidebar() {
     const nav = useNavigate()
-    const {showcartsidebar,setshowcartsidebar,width,cart,cartTotal} =useAppContext()
+    const {increaseandDecreaseQTY,showcartsidebar,setshowcartsidebar,width,cart,cartTotal} =useAppContext()
   return (
     <div className='cartsidebar' style={{right:showcartsidebar ? '0vw':width>=600? '-40vw':'-100vw'}}>
         <div className="carttopheading">
@@ -32,6 +32,8 @@ function CartSidebar() {
                 </div>
                 <div className="cartitemname">
                     <p>QTY: 1</p>
+                    <button onClick={()=> increaseandDecreaseQTY('minus',i)}>-</button>
+                    <button onClick={()=>increaseandDecreaseQTY('plus',i)}>+</button>
                 </div>
                 <div className="cartitemname">
                     <h3>₹ {i.price}</h3>

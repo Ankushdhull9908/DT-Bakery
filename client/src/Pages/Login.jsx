@@ -3,11 +3,12 @@ import './Login.css';
 import { useAppContext } from '../context/AppContext';
 
 const Login = () => {
-
+  const [showlogin,setshowlogin] = useState(true)
   const {setlogindata} =useAppContext()
   const [email,setemail] = useState('')
   const [password,setpassword]= useState('')
-
+  //var buttonText = 
+  const [buttontext,setbuttontext]=  useState(showlogin? 'Login':'Register')
   function submitForm()
   {
       if(!email || !password) return
@@ -30,6 +31,8 @@ const Login = () => {
       }
 
   }
+
+  console.log('show login',showlogin)
   return (
     <div className={'modalOverlay'}>
       <div className={'loginContainer'}>
@@ -54,12 +57,12 @@ const Login = () => {
           </a>
           
           <button type="submit" className={'loginButton'} onClick={()=> submitForm()}>
-            LOG IN
+            {buttontext}
           </button>
         </form>
         
         <div className={'loginfooter'}>
-          Don't have an account? <a href="#register">Register now</a>
+          Don't have an account? <p onClick={()=> setshowlogin(false)}>Register now</p>
         </div>
       </div>
     </div>

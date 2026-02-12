@@ -18,6 +18,14 @@
     color: black;
 }
 
+.cartitem .cartitemname{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 5px;
+
+}
+
 
 
 .cartsidebar .carttopheading{
