@@ -89,6 +89,7 @@
 
 }
 .productcard .cardfavaddtocart .productcardactionicon{
+    cursor: pointer;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -97,6 +98,10 @@
     border-radius: 50%;
     background-color: white;
 }
+.productcard .cardfavaddtocart .productcardactionicon:hover{
+    background-color: #BC8157;
+}
+
 
 .productcard .cardfavaddtocart .productcardactionicon img{
     height: 28px;

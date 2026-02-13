@@ -8,17 +8,23 @@ import HomePage from './Pages/HomePAGE1'
 import Footer from './Components/Footer'
 import AboutUs from './Pages/AboutUs'
 import Cart from './Pages/Cart'
-
+import { useAppContext } from './context/AppContext'
 
 function App() {
+  const {width} = useAppContext()
   
 
   return (
     <div className='app'>
+
       <NavBar/>
       <Routes>
+        <Route path='*' element={<HomePage/>}/>
         <Route path='/' element={<HomePage/>}/>
-        <Route path='/login' element={<Login/>}/>
+        {
+          width>=600? <Route path='/login' element={<Login/>}/>:''
+        }
+        
         <Route path='/aboutus' element={<AboutUs/>}/>
         <Route path='/cart' element={<Cart/>}/>
       </Routes>

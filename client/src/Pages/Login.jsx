@@ -3,17 +3,21 @@ import './Login.css';
 import { useAppContext } from '../context/AppContext';
 
 const Login = () => {
-  const [showlogin,setshowlogin] = useState(true)
+ 
   const {setlogindata} =useAppContext()
   const [email,setemail] = useState('')
   const [password,setpassword]= useState('')
-  //var buttonText = 
-  const [buttontext,setbuttontext]=  useState(showlogin? 'Login':'Register')
-  function submitForm()
+  const [buttontext,setbuttontext]=  useState('Login')
+  function submitForm(e)
   {
+      //e.preventDefault()
       if(!email || !password) return
 
-      if(email==='user@gmail.com' && password==='123')
+
+      if(buttontext==='Login')
+      {
+          alert('Login runned')
+          if(email==='user@gmail.com' && password==='123')
       {
         setlogindata(data)
         const data = {email:email,role:'user'}
@@ -29,10 +33,14 @@ const Login = () => {
         
         alert('Wrong password')
       }
+      }else{
+          alert('register runned')
+      }
+
+      
 
   }
 
-  console.log('show login',showlogin)
   return (
     <div className={'modalOverlay'}>
       <div className={'loginContainer'}>
@@ -40,8 +48,11 @@ const Login = () => {
         
         <h1 className={'logo'}>DT Bakery</h1>
         <hr className={'divider'} />
+        {
+          buttontext==="Login" ? <p className={'subtitle'}>Great to have you back!</p> :''
+        }
         
-        <p className={'subtitle'}>Great to have you back!</p>
+        
         
         <form className={'loginForm'}>
           <div className={'inputGroup'}>
@@ -51,19 +62,26 @@ const Login = () => {
           <div className={'inputGroup'}>
             <input type="password" placeholder="Password" required value={password} onChange={(e)=> setpassword(e.target.value)}/>
           </div>
-          
-          <a href="#forgot" className={'forgotPassword'}>
+          {
+            buttontext==='Login' ? <a href="#forgot" className={'forgotPassword'}>
             Forgot your password?
-          </a>
+          </a> : ''
+          }
+          
+          
           
           <button type="submit" className={'loginButton'} onClick={()=> submitForm()}>
             {buttontext}
           </button>
         </form>
         
-        <div className={'loginfooter'}>
-          Don't have an account? <p onClick={()=> setshowlogin(false)}>Register now</p>
+        {
+          buttontext==="Login" ? <div className={'loginfooter'}>
+          Don't have an account? <p onClick={()=> setbuttontext('Register')}>Register now</p>
+        </div> :  <div className={'loginfooter'}>
+          Already Have an Account? <p onClick={()=> setbuttontext('Login')}>Login</p>
         </div>
+        }
       </div>
     </div>
   );

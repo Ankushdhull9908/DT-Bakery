@@ -7,6 +7,7 @@ function NavSideBar() {
     const {width,showmenu,setshowmenu,logindata,setlogindata} = useAppContext()
 
     const [showlogin,setshowlogin]=useState(false)
+    const [buttontext,setbuttontext]=  useState('Login')
     const [email,setemail] = useState('')
       const [password,setpassword]= useState('')
     console.log('login data',logindata)
@@ -68,8 +69,11 @@ function NavSideBar() {
         
         <h1 className={'logo'}>DT Bakery</h1>
         <hr className={'divider'} />
+        {
+          buttontext==="Login" ? <p className={'subtitle'}>Great to have you back!</p> :''
+        }
         
-        <p className={'subtitle'}>Great to have you back!</p>
+        
         
         <form className={'loginForm'}>
           <div className={'inputGroup'}>
@@ -79,19 +83,26 @@ function NavSideBar() {
           <div className={'inputGroup'}>
             <input type="password" placeholder="Password" required value={password} onChange={(e)=> setpassword(e.target.value)}/>
           </div>
-          
-          <a href="#forgot" className={'forgotPassword'}>
+          {
+            buttontext==='Login' ? <a href="#forgot" className={'forgotPassword'}>
             Forgot your password?
-          </a>
+          </a> : ''
+          }
+          
+          
           
           <button type="submit" className={'loginButton'} onClick={()=> submitForm()}>
-            LOG IN
+            {buttontext}
           </button>
         </form>
         
-        <div className={'loginfooter'}>
-          Don't have an account? <a href="#register">Register now</a>
+        {
+          buttontext==="Login" ? <div className={'loginfooter'}>
+          Don't have an account? <p onClick={()=> setbuttontext('Register')}>Register now</p>
+        </div> :  <div className={'loginfooter'}>
+          Already Have an Account? <p onClick={()=> setbuttontext('Login')}>Login</p>
         </div>
+        }
       </div> : <ul>
 
           <li onClick={()=> {nav('/')

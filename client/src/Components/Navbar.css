@@ -77,6 +77,11 @@ nav .navright img{
     height: 22px;
     width: auto;
     cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+nav .navright img:hover{
+    transform: scale(1.100);
 }
 
 nav li:hover{
