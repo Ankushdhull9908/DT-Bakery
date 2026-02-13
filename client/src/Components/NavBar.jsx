@@ -8,9 +8,15 @@ import CartSidebar from './CartSidebar.jsx'
 function NavBar() {
 
   const nav = useNavigate()
-
-  const {width,showmenu,setshowmenu,setshowcartsidebar} = useAppContext()
   
+
+  const {width,showmenu,setshowmenu,setshowcartsidebar,logindata} = useAppContext()
+  const [role,setrole] = useState(null)
+  useEffect(()=>{
+    if(logindata!==null) setrole(logindata.role)
+    else setrole(null)
+     
+  },[logindata])
 
 
   console.log('show menu',showmenu)
@@ -30,7 +36,9 @@ function NavBar() {
         </ul>
         <div className="navright">
             <img src={icons.search} alt='search'/>
-            <img src={icons.user} alt='user' onClick={()=>nav('/login')} style={{display:width>=600 ? 'block': 'none'}}/>
+            <img src={icons.user} alt='user' onClick={()=>{ 
+              !logindata? nav('/login'):role==="admin" ? nav('/admin'): nav('/user')
+              }} style={{display:width>=600 ? 'block': 'none'}}/>
             <img src={icons.heart} alt='like' style={{display:width>=600 ? 'block': 'none'}}/>
             <img src={icons.bag} alt='cart' onClick={()=> setshowcartsidebar(true)}/>
         </div>

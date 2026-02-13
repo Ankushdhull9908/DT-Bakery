@@ -1,16 +1,17 @@
 
+import { useNavigate } from 'react-router-dom'
 import { icons } from '../assets/Assets'
 import { useAppContext } from '../context/AppContext'
 import './AllItemsSection.css'
-import { motion } from 'framer-motion'
-
+import { motion } from 'framer-motion' 
 function AllItemsSection() {
 
-    const {AddToCart,setshowcartsidebar} = useAppContext()
+    const {AddToCart,setshowcartsidebar,logindata} = useAppContext()
     const products = [{src:icons.product1,name:"Pastry Cake",price:20},
         ,{src:icons.product2,name:"Pastry Cake",price:40},{src:icons.product3,name:"Pastry Cake",price:80},{src:icons.product4,name:"Pastry Cake",price:30},
         {src:icons.product5,name:"Pastry Cake",price:100},{src:icons.product6,name:"Pastry Cake",price:60},
         {src:icons.product7,name:"Pastry Cake",price:200},{src:icons.product8,name:"Pastry Cake",price:160}]
+        const nav = useNavigate()
   return (
     <motion.div
       initial={{ opacity: 0, y: 50 }}
@@ -45,9 +46,8 @@ function AllItemsSection() {
                             <img src={icons.heart} alt='heart'/>
                          </div>
                          <div className="productcardactionicon">
-                            <img src={icons.bag} alt='bag' onClick={()=> {AddToCart(index),
-                            setshowcartsidebar(true)
-                        }}/>
+                            <img src={icons.bag} alt='bag' onClick={()=> { logindata ? (AddToCart(index),
+                            setshowcartsidebar(true)) : nav('/login')  }}/>
                          </div>
                          <div className="productcardactionicon">
                             <img src={icons.search} alt='search'/>

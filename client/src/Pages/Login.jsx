@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './Login.css';
 import { useAppContext } from '../context/AppContext';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
  
@@ -8,6 +9,8 @@ const Login = () => {
   const [email,setemail] = useState('')
   const [password,setpassword]= useState('')
   const [buttontext,setbuttontext]=  useState('Login')
+
+  const nav=useNavigate()
   function submitForm(e)
   {
       //e.preventDefault()
@@ -19,16 +22,29 @@ const Login = () => {
           alert('Login runned')
           if(email==='user@gmail.com' && password==='123')
       {
-        setlogindata(data)
+        
         const data = {email:email,role:'user'}
+        setlogindata(data)
         alert('login successfull')
+        
         localStorage.setItem('userdata',JSON.stringify(data))
+        setTimeout(()=>{
+        nav('/')
+    },1000)
       }else if(email==="admin@gmail.com" && password==='123')
       {
-        setlogindata(data)
+        
         const data = {email:email,role:'admin'}
+        setlogindata(data)
+
         localStorage.setItem('userdata',JSON.stringify(data))
         alert('login successfull')
+        setTimeout(()=>{
+        nav('/')
+    },1000)
+
+
+        
       }else{
         
         alert('Wrong password')

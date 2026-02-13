@@ -9,6 +9,8 @@ import Footer from './Components/Footer'
 import AboutUs from './Pages/AboutUs'
 import Cart from './Pages/Cart'
 import { useAppContext } from './context/AppContext'
+import AdminPage from './Pages/AdminPage'
+import UserPage from './Pages/UserPage'
 
 function App() {
   const {width} = useAppContext()
@@ -27,6 +29,8 @@ function App() {
         
         <Route path='/aboutus' element={<AboutUs/>}/>
         <Route path='/cart' element={<Cart/>}/>
+        <Route path='/admin' element={<AdminPage/>}/>
+        <Route path='/user' element={<UserPage/>}/>
       </Routes>
       <Footer/>
     

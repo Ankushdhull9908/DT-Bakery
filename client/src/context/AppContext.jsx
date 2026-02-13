@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useRef, useState } from "react";
+import { createContext, use, useContext, useEffect, useRef, useState } from "react";
 
 /* 1. Create Context */
 const AppContext = createContext();
@@ -13,6 +13,7 @@ export const AppProvider = ({ children }) => {
    const [cart,setcart] = useState([])
    const [cartTotal,setcartTotal] = useState(0)
    const [logindata,setlogindata]=useState(null)
+   
 
   useEffect(() => {
   if (showcartsidebar || showmenu) {
