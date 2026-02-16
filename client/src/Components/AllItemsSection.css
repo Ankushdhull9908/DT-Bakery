@@ -65,7 +65,9 @@
 .productscollection .productcard{
     position: relative;
     padding: 15px;
-
+    
+   height: auto;
+   width: auto;
 }
 
 
@@ -133,8 +135,11 @@
 
 
 .productscollection .productcard img{
-    height: 300px;
-    width: 300px;
+    max-height: 300px;
+    max-width: 300px;
+    height: auto;
+    width: auto;
+   
 }
 
 @media (max-width:600px) {
@@ -162,5 +167,30 @@
 
     padding: 5px;
 
+}
+
+
+.productcard .cardfavaddtocart {
+
+  top: 5px;
+  right: 5px;
+  width: 40px;
+  
+  transform: translateY(5px);
+
+  gap:10px;
+
+}
+.productcard .cardfavaddtocart .productcardactionicon{
+
+    height: 25px;
+    width: 25px;
+
+}
+
+
+.productcard .cardfavaddtocart .productcardactionicon img{
+    height: 22px;
+    width: 22px;
 }
 }
