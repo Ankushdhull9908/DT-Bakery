@@ -2,7 +2,7 @@ import express from "express"
 import cors from 'cors'
 
 import mongoDB from "./config/db.js"
-import 
+
 
 
 const app = express()

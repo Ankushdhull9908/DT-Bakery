@@ -146,4 +146,21 @@
 .AllItemsSection .AllItemsSectionbuttonscollection{
     width: 100%;
 }
+
+
+.productcard .productname p{
+    font-size: 1.2rem;
+}
+
+
+.productscollection .productcard img{
+    height: 150px;
+    width: 150px;
+}
+
+.productscollection .productcard{
+
+    padding: 5px;
+
+}
 }
