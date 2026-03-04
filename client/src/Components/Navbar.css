@@ -61,6 +61,8 @@ nav .navsidebar{
 }
 
 
+
+
 nav .navsidebar ul{
 display: flex;
     justify-content: flex-start;
@@ -170,6 +172,15 @@ nav li:hover{
 
 .navsidebar .closebtn p{
     color: white;
+}
+
+.logout-li p {
+    color: #d9534f; /* A soft red color */
+    font-weight: bold;
+}
+
+.logout-li:hover {
+    background-color: #fff5f5; /* Light red hover effect */
 }
 @media (max-width:600px) {
     nav ul{
