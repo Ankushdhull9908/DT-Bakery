@@ -1,0 +1,97 @@
+.home-big-image-container {
+  display: flex;
+  width: 100%; /* Changed to 100% to fill parent, or keep 90% if preferred */
+  max-width: 1400px;
+  margin: 40px auto;
+  gap: 20px; /* Space between left and right sections */
+  padding: 0 20px;
+  font-family: 'Arial', sans-serif;
+}
+
+/* Left Side Styling - Big Image */
+.main-image-wrapper {
+  flex: 1.5; /* Takes 60% of the space */
+  height: 600px; /* Fixed height to keep it consistent */
+}
+
+.main-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Right Side Styling - Small Image & Text Column */
+.content-side-wrapper {
+  flex: 1; /* Takes 40% of the space */
+  display: flex;
+  flex-direction: column;
+  gap: 0; /* Align perfectly */
+}
+
+.small-image-box {
+  width: 100%;
+  height: 350px; /* Adjust height for the top portion */
+}
+
+.small-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Text Section - Positioned below the small image */
+.text-content-box {
+  flex: 1;
+  background-color: #fcfcfc; /* Subtle light background to distinguish text area */
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.title {
+  font-size: 24px;
+  letter-spacing: 4px;
+  margin-bottom: 10px;
+  color: #000;
+  font-weight: 600;
+}
+
+.subtitle {
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  color: #666;
+  margin-bottom: 25px;
+}
+
+.shop-btn {
+  background-color: #b8865f;
+  color: white;
+  border: none;
+  padding: 14px 45px;
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.shop-btn:hover {
+  background-color: #9a6d4a;
+  transform: translateY(-2px);
+}
+
+/* Responsive adjustment for mobile */
+@media (max-width: 992px) {
+  .home-big-image-container {
+    flex-direction: column;
+  }
+  
+  .main-image-wrapper, .small-image-box {
+    height: 400px; /* Shrink height for tablets */
+  }
+}

@@ -2,6 +2,8 @@
 import Hero from '../Components/Hero'
 import DeliciousOfferSection from '../Components/DeliciousOfferSection'
 import AllItemsSection from '../Components/AllItemsSection'
+import BigImageSection from '../Components/BigImagesSection'
+import HomeBigImageSection from '../Components/HomeBigImageSection'
 
 function homePage1() {
   return (
@@ -9,6 +11,7 @@ function homePage1() {
       <Hero/>
       <DeliciousOfferSection/>
       <AllItemsSection/>
+      <HomeBigImageSection/>
     </div>
   )
 }

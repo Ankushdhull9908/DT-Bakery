@@ -13,6 +13,7 @@ import AdminPage from './Pages/AdminPage'
 import UserPage from './Pages/UserPage'
 import AdminManageProductPage from './Pages/AdminManageProductPage'
 import AdminDashboard from './Pages/AdminDashboard'
+import Checkout from './Pages/Checkout'
 
 function App() {
   const {width} = useAppContext()
@@ -31,6 +32,7 @@ function App() {
         
         <Route path='/aboutus' element={<AboutUs/>}/>
         <Route path='/cart' element={<Cart/>}/>
+        <Route path='/checkout' element={<Checkout/>}/>
         <Route path='/admin' element={<AdminPage/>}>
          <Route index element={<AdminDashboard />} />
           <Route path='admindashboard' index element={<AdminDashboard/>}/>

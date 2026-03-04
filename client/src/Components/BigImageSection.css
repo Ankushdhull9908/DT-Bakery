@@ -1,0 +1,37 @@
+.BigImageSection{
+    width: 90%;
+    height: auto;
+    background-color: red;
+    min-height: 100vh;
+}
+
+.BigImageSectionrow1{
+    height: 100%;
+    width: 100%;
+    padding: 15px;
+    flex-direction: row;
+
+}
+
+.BigImageSectionrow1 .leftbigimg{
+    width: 70%;
+    height: 100%;
+
+
+}
+
+.BigImageSectionrow1 .leftbigimg img{
+    height: 50%;
+    width: 90%;
+}
+
+.rightsmallimgandcontent{
+    height: 100%;
+    width: 25%;
+    background-color: green;
+}
+
+.rightsmallimgandcontent img{
+    height: 50%;
+    width: 100%;
+}
