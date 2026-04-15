@@ -1,22 +1,41 @@
-import express from "express"
-import cors from 'cors'
+import express from "express";
+import cors from "cors";
+import dotenv from "dotenv";
+import mongoDB from "./config/db.js";
+import userRoutes from "./routes/userRoutes.js";
+import itemRoutes from "./routes/itemRoutes.js";
 
-import mongoDB from "./config/db.js"
+dotenv.config();
 
+const app = express();
 
+// --- Middleware ---
+app.use(cors({ origin: process.env.CLIENT_URL || "http://localhost:5173" }));
+app.use(express.json());
 
-const app = express()
+// --- DB ---
+mongoDB();
 
-mongoDB()
+// --- Routes ---
+app.use("/api/user", userRoutes);
+app.use("/api/items", itemRoutes);
 
-app.use('/api/user',)
+// --- Health check ---
+app.get("/", (req, res) => {
+  res.json({ success: true, message: "DT Bakery server running" });
+});
 
+// --- 404 handler ---
+app.use((req, res) => {
+  res.status(404).json({ success: false, message: "Route not found" });
+});
 
-app.get('/',(req,res)=>{
-       res.send('server running')
-})
+// --- Global error handler ---
+app.use((err, req, res, next) => {
+  console.error("Unhandled error:", err.message);
+  res.status(500).json({ success: false, message: "Internal server error" });
+});
 
-
-app.listen(5500,()=>{
-    console.log('server running on port 5500')
-})
+app.listen(5500, () => {
+  console.log("Server running on http://localhost:5500");
+});

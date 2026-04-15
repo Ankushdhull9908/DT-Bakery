@@ -26,9 +26,8 @@ function App() {
       <Routes>
         <Route path='*' element={<HomePage/>}/>
         <Route path='/' element={<HomePage/>}/>
-        {
-          width>=600? <Route path='/login' element={<Login/>}/>:''
-        }
+        <Route path='/login' element={<Login/>}/>
+        
         
         <Route path='/aboutus' element={<AboutUs/>}/>
         <Route path='/cart' element={<Cart/>}/>
