@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useAppContext } from '../context/AppContext'
 import { useNavigate } from 'react-router-dom'
 import { icons } from '../assets/Assets'
+import './NavSideBar.css' // Ensure you have the CSS file linked
 
 function NavSideBar() {
     const { width, showmenu, setshowmenu, logindata, setlogindata } = useAppContext()
@@ -13,136 +14,101 @@ function NavSideBar() {
 
     const nav = useNavigate()
 
-    // --- Logout Function ---
     const handleLogout = () => {
         setlogindata(null);
         localStorage.removeItem('userdata');
-        alert("Logged out successfully");
         setshowmenu(false);
         nav('/');
     };
 
     function submitForm(e) {
         e.preventDefault(); 
+        if (!email || !password) return;
 
-        if (!email || !password) {
-            alert("Please fill in all fields");
-            return;
-        }
-
-        if (buttontext === 'Register') {
-            const data = { email: email, role: 'user' }; // Defined before use
-            setlogindata(data);
-            localStorage.setItem('userdata', JSON.stringify(data));
-            alert('Registration Successful!');
-            setshowmenu(false);
-            return;
-        }
-
-        if (email === 'user@gmail.com' && password === '123') {
-            const data = { email: email, role: 'user' };
-            setlogindata(data);
-            localStorage.setItem('userdata', JSON.stringify(data));
-            alert('Login successful');
-            setshowmenu(false);
-        } else if (email === "admin@gmail.com" && password === '123') {
-            const data = { email: email, role: 'admin' };
-            setlogindata(data);
-            localStorage.setItem('userdata', JSON.stringify(data));
-            alert('Admin Login successful');
-            setshowmenu(false);
-        } else {
-            alert('Wrong email or password');
-        }
+        // Mock Login Logic
+        const role = email.includes('admin') ? 'admin' : 'user';
+        const data = { email, role };
+        setlogindata(data);
+        localStorage.setItem('userdata', JSON.stringify(data));
+        setshowmenu(false);
     }
 
+    const menuLinks = [
+        { name: 'Home', path: '/', icon: '🏠' },
+        { name: 'Our Menu', path: '/menu', icon: '🍰' },
+        { name: 'About Us', path: '/aboutus', icon: '✨' },
+        { name: 'Cart', path: '/cart', icon: '🛒' },
+    ];
+
     return (
-        <div className="navsidebar" style={{ left: width < 600 && showmenu ? '0' : '-100vw' }}>
-
-            <div className="menuandlogin">
-                <div className="menubox" onClick={() => setshowlogin(false)} 
-                     style={{ backgroundColor: !showlogin ? 'black' : 'white', color: !showlogin ? 'white' : 'black' }}>
-                    <img src={icons.hamburger} alt='hamburger' />
-                    <p>Menu</p>
+        <div className="nsb-sidebar" style={{ left: width < 600 && showmenu ? '0' : '-100vw' }}>
+            
+            <div className="nsb-header">
+                <div 
+                    className={`nsb-tab ${!showlogin ? 'nsb-tab-active' : ''}`} 
+                    onClick={() => setshowlogin(false)}
+                >
+                    <span>Menu</span>
                 </div>
-
-                {logindata === null && (
-                    <div className="menubox" onClick={() => setshowlogin(true)}
-                        style={{ backgroundColor: showlogin ? "black" : "white", color: showlogin ? "white" : "black" }}>
-                        <img src={icons.user} alt="user" />
-                        <p>Login</p>
+                {!logindata && (
+                    <div 
+                        className={`nsb-tab ${showlogin ? 'nsb-tab-active' : ''}`} 
+                        onClick={() => setshowlogin(true)}
+                    >
+                        <span>Login</span>
                     </div>
                 )}
             </div>
 
-            {showlogin && !logindata ? (
-                <div className={'loginContainer'}>
-                    <h1 className={'logo'}>DT Bakery</h1>
-                    <hr className={'divider'} />
-                    {buttontext === "Login" && <p className={'subtitle'}>Great to have you back!</p>}
-
-                    <form className={'loginForm'} onSubmit={submitForm}>
-                        <div className={'inputGroup'}>
-                            <input type="email" placeholder="Email address" required value={email} onChange={(e) => setemail(e.target.value)} />
-                        </div>
-                        <div className={'inputGroup'}>
+            <div className="nsb-body">
+                {showlogin && !logindata ? (
+                    <div className={'nsb-login-box'}>
+                        <h2 className='nsb-title'>DT Bakery</h2>
+                        <form className={'nsb-form'} onSubmit={submitForm}>
+                            <input type="email" placeholder="Email" required value={email} onChange={(e) => setemail(e.target.value)} />
                             <input type="password" placeholder="Password" required value={password} onChange={(e) => setpassword(e.target.value)} />
-                        </div>
+                            <button type="submit" className={'nsb-submit'}>{buttontext}</button>
+                        </form>
+                        <p className="nsb-switch" onClick={() => setbuttontext(buttontext === 'Login' ? 'Register' : 'Login')}>
+                            {buttontext === 'Login' ? "New here? Register" : "Have an account? Login"}
+                        </p>
+                    </div>
+                ) : (
+                    <div className="nsb-menu-list">
+                        <p className="nsb-section-label">Navigation</p>
+                        {menuLinks.map((link) => (
+                            <div key={link.name} className="nsb-link-item" onClick={() => { nav(link.path); setshowmenu(false); }}>
+                                <span className="nsb-link-icon">{link.icon}</span>
+                                <span className="nsb-link-text">{link.name}</span>
+                                <img src={icons.rightarrow} className="nsb-link-arrow" alt='arrow' />
+                            </div>
+                        ))}
 
-                        {buttontext === 'Login' && (
-                            <a href="#forgot" className={'forgotPassword'}>Forgot your password?</a>
-                        )}
-
-                        <button type="submit" className={'loginButton'}>
-                            {buttontext}
-                        </button>
-                    </form>
-
-                    <div className={'loginfooter'}>
-                        {buttontext === "Login" ? (
-                            <>Don't have an account? <p onClick={() => setbuttontext('Register')}>Register now</p></>
+                        <p className="nsb-section-label nsb-mt">Account</p>
+                        {logindata ? (
+                            <>
+                                <div className="nsb-link-item" onClick={() => { nav('/user'); setshowmenu(false); }}>
+                                    <span className="nsb-link-icon">👤</span>
+                                    <span className="nsb-link-text">My Profile</span>
+                                    <img src={icons.rightarrow} className="nsb-link-arrow" alt='arrow' />
+                                </div>
+                                <div className="nsb-link-item nsb-logout" onClick={handleLogout}>
+                                    <span className="nsb-link-icon">🚪</span>
+                                    <span className="nsb-link-text">Logout</span>
+                                </div>
+                            </>
                         ) : (
-                            <>Already Have an Account? <p onClick={() => setbuttontext('Login')}>Login</p></>
+                            <div className="nsb-link-item" onClick={() => setshowlogin(true)}>
+                                <span className="nsb-link-icon">🔑</span>
+                                <span className="nsb-link-text">Login / Register</span>
+                            </div>
                         )}
                     </div>
-                </div>
-            ) : (
-                <ul>
-                    <li onClick={() => { nav('/'); setshowmenu(false); }}>
-                        <p>Home</p>
-                        <div className="leftarrows"><img src={icons.rightarrow} alt='right' /></div>
-                    </li>
-                    <li onClick={() => { nav('/aboutus'); setshowmenu(false); }}>
-                        <p>About Us</p>
-                        <div className="leftarrows"><img src={icons.rightarrow} alt='right' /></div>
-                    </li>
-                    <li onClick={() => { nav('/cart'); setshowmenu(false); }}>
-                        <p>Cart</p>
-                        <div className="leftarrows"><img src={icons.rightarrow} alt='right' /></div>
-                    </li>
-                    
-                    {logindata ? (
-                        <>
-                            <li onClick={() => { nav('/user'); setshowmenu(false); }}>
-                                <p>Profile</p>
-                                <div className="leftarrows"><img src={icons.rightarrow} alt='right' /></div>
-                            </li>
-                            <li onClick={handleLogout} className="logout-li">
-                                <p style={{color: 'red'}}>Logout</p>
-                                <div className="leftarrows"><img src={icons.rightarrow} alt='right' /></div>
-                            </li>
-                        </>
-                    ) : (
-                        <li onClick={() => setshowlogin(true)}>
-                            <p>Login / Register</p>
-                            <div className="leftarrows"><img src={icons.rightarrow} alt='right' /></div>
-                        </li>
-                    )}
-                </ul>
-            )}
+                )}
+            </div>
 
-            <div className="closebtn" onClick={() => setshowmenu(false)}>
-                <p>close</p>
+            <div className="nsb-close-area" onClick={() => setshowmenu(false)}>
+                <span>Close Menu ×</span>
             </div>
         </div>
     )

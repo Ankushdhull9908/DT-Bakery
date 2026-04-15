@@ -1,0 +1,143 @@
+/* Sidebar Main Container */
+.nsb-sidebar {
+    position: fixed;
+    top: 0;
+    width: 85vw; /* Almost full screen on mobile */
+    max-width: 350px;
+    height: 100vh;
+    background: #ffffff;
+    z-index: 1000;
+    transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    flex-direction: column;
+    box-shadow: 10px 0 30px rgba(0,0,0,0.1);
+}
+
+/* Tabs Header */
+.nsb-header {
+    display: flex;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.nsb-tab {
+    flex: 1;
+    padding: 20px;
+    text-align: center;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 13px;
+    letter-spacing: 1px;
+    cursor: pointer;
+    color: #888;
+    transition: 0.3s;
+}
+
+.nsb-tab-active {
+    color: #1a0e00;
+    background: #f9f4ef;
+    border-bottom: 2px solid #c8a97e;
+}
+
+/* Body Content */
+.nsb-body {
+    flex: 1;
+    padding: 25px;
+    overflow-y: auto;
+}
+
+.nsb-section-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    color: #c8a97e;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    margin-bottom: 15px;
+}
+
+.nsb-mt { margin-top: 30px; }
+
+/* Menu Links */
+.nsb-link-item {
+    display: flex;
+    align-items: center;
+    padding: 15px 0;
+    border-bottom: 1px solid #f9f9f9;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.nsb-link-item:hover {
+    padding-left: 8px;
+}
+
+.nsb-link-icon {
+    font-size: 20px;
+    margin-right: 15px;
+    width: 25px;
+}
+
+.nsb-link-text {
+    flex: 1;
+    font-size: 16px;
+    font-weight: 500;
+    color: #333;
+}
+
+.nsb-link-arrow {
+    width: 12px;
+    opacity: 0.4;
+}
+
+.nsb-logout .nsb-link-text {
+    color: #e05252;
+}
+
+/* Login specific tweaks */
+.nsb-login-box {
+    text-align: center;
+}
+
+.nsb-title {
+    font-family: 'Playfair Display', serif;
+    margin-bottom: 20px;
+    color: #1a0e00;
+}
+
+.nsb-form input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #e8ddd2;
+    border-radius: 4px;
+}
+
+.nsb-submit {
+    width: 100%;
+    padding: 12px;
+    background: #1a0e00;
+    color: #f5d9a8;
+    border: none;
+    border-radius: 4px;
+    font-weight: 600;
+}
+
+.nsb-switch {
+    margin-top: 20px;
+    font-size: 13px;
+    color: #c8a97e;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+/* Close Button at Bottom */
+.nsb-close-area {
+    padding: 20px;
+    background: #1a0e00;
+    color: #fff;
+    text-align: center;
+    font-weight: 600;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: 1px;
+}
