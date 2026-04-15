@@ -47,7 +47,8 @@ function AllItemsSection() {
           {products.map((item) => (
             <div className="productcard" key={item.id}>
               <div className="productimg">
-                <img src={item.src} alt={item.name} />
+                <img src={item.src} alt={item.name}  onClick={() => nav(`/item/${item.id}`, { state: { item, products } })}
+                style={{ cursor: 'pointer' }}/>
                 <div className="cardfavaddtocart">
                   <div className="productcardactionicon"><img src={icons.heart} alt='fav' /></div>
                   <div className="productcardactionicon" onClick={() => handleAddClick(item)}>

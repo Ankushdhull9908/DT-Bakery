@@ -14,6 +14,7 @@ import UserPage from './Pages/UserPage'
 import AdminManageProductPage from './Pages/AdminManageProductPage'
 import AdminDashboard from './Pages/AdminDashboard'
 import Checkout from './Pages/Checkout'
+import ItemDetail from './Pages/ItemDetail'
 
 function App() {
   const {width} = useAppContext()
@@ -28,7 +29,7 @@ function App() {
         <Route path='/' element={<HomePage/>}/>
         <Route path='/login' element={<Login/>}/>
         
-        
+        <Route path="/item/:id" element={<ItemDetail />} />
         <Route path='/aboutus' element={<AboutUs/>}/>
         <Route path='/cart' element={<Cart/>}/>
         <Route path='/checkout' element={<Checkout/>}/>

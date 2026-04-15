@@ -28,9 +28,9 @@ function CartSidebar() {
                 <div className="cartitemname"><p>{item.name}</p></div>
                 <div className="cartitemname">
                   <div className="qty-controls" style={{display:'flex', alignItems:'center', gap:'10px'}}>
-                    <button onClick={() => updateQTY(item.id, 'minus')} style={{cursor:'pointer'}}>-</button>
+                    <button onClick={() => updateQTY(item.id, 'minus')} style={{cursor:'pointer',height:'20px',width:'20px',borderRadius:'50%',display:'flex',justifyContent:'center',alignItems:'center'}}>-</button>
                     <span>{item.qty}</span>
-                    <button onClick={() => updateQTY(item.id, 'plus')} style={{cursor:'pointer'}}>+</button>
+                    <button onClick={() => updateQTY(item.id, 'plus')} style={{cursor:'pointer',height:'20px',width:'20px',borderRadius:'50%',display:'flex',justifyContent:'center',alignItems:'center'}}>+</button>
                   </div>
                 </div>
                 <div className="cartitemname">

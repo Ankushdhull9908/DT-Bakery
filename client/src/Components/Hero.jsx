@@ -1,38 +1,40 @@
 import React from 'react'
-import { icons } from '../assets/Assets'
 import './Hero.css'
-import { motion } from "framer-motion";
+import { motion } from "framer-motion"
+import heroBg from '../assets/hero.jpg'
 
 function Hero() {
   return (
-     <motion.div
-      initial={{ opacity: 0, y: 50 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6 }}
-      viewport={{ once: true }}
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 1 }}
     >
-    <div className='hero'>
-       
-        <div className="herocontent">
-            <div className="heroheading">
-              <h1>Chocolate Cake</h1>
-            </div>
-            <div className="heropara">
-             <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officiis debitis mollitia explicabo quae consectetur, ipsam fugiat dignissimos sapiente repellendus at harum deserunt corporis ab rerum tenetur nesciunt odit inventore numquam.</p>
-            </div>
-            <div className="herobuttoncollection">
-              <div className="herobtn">
-                <p>SHOP NOW</p>
-              </div>
-              <div className="herobtn">
-                <p>VIEW COLLECTION</p>
-              </div>
-            </div>
+      <div className='hero'>
+        <div className="hero-bg" style={{ backgroundImage: `url(${heroBg})` }}></div>
+        <div className="hero-overlay"></div>
 
-
+        <div className="hero-content">
+          <p className="hero-eyebrow">Artisan Bakery · Est. 2012</p>
+          <h1 className="hero-title">
+            Baked with<br /><em>Love & Craft</em>
+          </h1>
+          <div className="hero-divider"></div>
+          <p className="hero-desc">
+            Every cake, every pastry — made from scratch with the finest ingredients.
+            A little warmth in every bite.
+          </p>
+          <div className="hero-actions">
+            <button className="btn-primary">Shop Now</button>
+            <button className="btn-outline">View Collection</button>
+          </div>
         </div>
-      
-    </div>
+
+        <div className="hero-badge">
+          <span className="hero-badge-num">150+</span>
+          <span className="hero-badge-label">Handcrafted Recipes</span>
+        </div>
+      </div>
     </motion.div>
   )
 }
