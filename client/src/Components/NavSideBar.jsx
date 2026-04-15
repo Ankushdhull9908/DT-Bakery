@@ -123,8 +123,8 @@ function NavSideBar() {
                     
                     {logindata ? (
                         <>
-                            <li onClick={() => { nav('/profile'); setshowmenu(false); }}>
-                                <p>My Profile ({logindata.role})</p>
+                            <li onClick={() => { nav('/user'); setshowmenu(false); }}>
+                                <p>Profile</p>
                                 <div className="leftarrows"><img src={icons.rightarrow} alt='right' /></div>
                             </li>
                             <li onClick={handleLogout} className="logout-li">
