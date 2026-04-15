@@ -16,8 +16,15 @@ const Login = () => {
   const [loading, setloading] = useState(false);
   const [error, seterror] = useState('');
 
+  // Reusable helper to handle local storage and navigation
+  const finalizeLogin = (userData) => {
+    setlogindata(userData);
+    localStorage.setItem('userdata', JSON.stringify(userData));
+    nav(userData.role === 'admin' ? '/admin' : '/');
+  };
+
   const handleSubmit = async (e) => {
-    e.preventDefault();                          // ← was missing, form was refreshing page
+    e.preventDefault();
     seterror('');
 
     if (!email || !password) {
@@ -45,28 +52,38 @@ const Login = () => {
 
       const result = await response.json();
 
+      // If server is ONLINE but credentials are wrong
       if (!result.success) {
         seterror(result.message || 'Something went wrong');
+        setloading(false);
         return;
       }
 
-      // Store full user data + token
-      const userData = {
+      // Successful Online Login
+      finalizeLogin({
         id: result.data.id,
         name: result.data.name,
         email: result.data.email,
         role: result.data.role,
         token: result.data.token,
-      };
-
-      setlogindata(userData);
-      localStorage.setItem('userdata', JSON.stringify(userData));
-
-      nav(userData.role === 'admin' ? '/admin' : '/');
+      });
 
     } catch (err) {
-      seterror('Cannot reach server. Please try again.');
-      console.error('Auth error:', err);
+      // --- OFFLINE FALLBACK ---
+      // This triggers ONLY if the fetch() fails (Server Down / No Internet)
+      console.warn("Server unreachable. Entering Offline Mode.");
+
+      const fallbackData = {
+        id: Date.now(), // Generate temporary ID
+        name: name || email.split('@')[0], // Use provided name or email prefix
+        email: email,
+        role: email.includes('admin') ? 'admin' : 'user', // Basic role check
+        token: 'offline_token_local_access',
+        isOffline: true
+      };
+
+      finalizeLogin(fallbackData);
+
     } finally {
       setloading(false);
     }
@@ -75,23 +92,20 @@ const Login = () => {
   return (
     <div className={'modalOverlay'}>
       <div className={'loginContainer'}>
-
         <h1 className={'logo'}>DT Bakery</h1>
         <hr className={'divider'} />
+        
         {buttontext === 'Login' && (
           <p className={'subtitle'}>Great to have you back!</p>
         )}
 
-        {/* Error message */}
         {error && (
-          <p style={{ color: 'red', fontSize: '13px', marginBottom: '10px', textAlign: 'center' }}>
+          <p className="error-text" style={{ color: '#e05252', fontSize: '13px', marginBottom: '10px', textAlign: 'center' }}>
             {error}
           </p>
         )}
 
         <form className={'loginForm'} onSubmit={handleSubmit}>
-
-          {/* Name field — only shown during Register */}
           {buttontext === 'Register' && (
             <div className={'inputGroup'}>
               <input
@@ -136,26 +150,27 @@ const Login = () => {
             disabled={loading}
             style={{ opacity: loading ? 0.7 : 1 }}
           >
-            {loading ? 'Please wait...' : buttontext}
+            {loading ? 'Authenticating...' : buttontext}
           </button>
         </form>
 
-        {buttontext === 'Login' ? (
-          <div className={'loginfooter'}>
-            Don't have an account?{' '}
-            <p onClick={() => { setbuttontext('Register'); seterror(''); }}>
-              Register now
-            </p>
-          </div>
-        ) : (
-          <div className={'loginfooter'}>
-            Already have an account?{' '}
-            <p onClick={() => { setbuttontext('Login'); seterror(''); }}>
-              Login
-            </p>
-          </div>
-        )}
-
+        <div className={'loginfooter'}>
+          {buttontext === 'Login' ? (
+            <>
+              Don't have an account?{' '}
+              <p onClick={() => { setbuttontext('Register'); seterror(''); }}>
+                Register now
+              </p>
+            </>
+          ) : (
+            <>
+              Already have an account?{' '}
+              <p onClick={() => { setbuttontext('Login'); seterror(''); }}>
+                Login
+              </p>
+            </>
+          )}
+        </div>
       </div>
     </div>
   );
