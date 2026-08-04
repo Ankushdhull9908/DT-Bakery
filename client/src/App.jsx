@@ -17,7 +17,9 @@ import Checkout from './Pages/Checkout'
 import ItemDetail from './Pages/ItemDetail'
 
 function App() {
-  const {width} = useAppContext()
+  const {width,logindata} = useAppContext()
+
+  console.log('logindata',logindata)
   
 
   return (
@@ -38,7 +40,7 @@ function App() {
           <Route path='admindashboard' index element={<AdminDashboard/>}/>
           <Route path='adminmanageproduct' element={<AdminManageProductPage/>}/>
         </Route>
-        <Route path='/user' element={<UserPage/>}/>
+        <Route path='/user' element={logindata===null ? <Login/> : <UserPage/>}/>
       </Routes>
       <Footer/>
     

@@ -20,7 +20,17 @@ const Login = () => {
   const finalizeLogin = (userData) => {
     setlogindata(userData);
     localStorage.setItem('userdata', JSON.stringify(userData));
-    nav(userData.role === 'admin' ? '/admin' : '/');
+    setTimeout(()=>{
+        //nav(userData.role === 'admin' ? '/admin' : '/');
+
+        if(userData.role==='admin')
+        {
+          nav('/admin')
+        }else if(userData.role==='user'){
+          nav('/user')
+        }
+    },1000)
+    
   };
 
   const handleSubmit = async (e) => {

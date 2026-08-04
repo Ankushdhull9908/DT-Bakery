@@ -16,6 +16,7 @@ const UserPage = () => {
   ];
 
   const handleLogout = () => {
+    localStorage.removeItem('userdata')
     setlogindata(null);
     nav('/');
   };
